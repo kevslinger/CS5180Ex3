@@ -73,17 +73,3 @@ def get_state_space():
         for y in range(5):
             S.append((x, y))
     return S
-
-def main():
-    average_reward = 0
-    # Use python indexing to start at state 0,0
-    state = (4, 0)
-    for i in range(10000):
-        state, reward = step(state, random.choice(ACTION_LIST))
-        average_reward += (1/(i+1)) * (reward - average_reward)
-        if i % 100 == 0:
-            print(average_reward)
-
-
-if __name__ == '__main__':
-    main()
