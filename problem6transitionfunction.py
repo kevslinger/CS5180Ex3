@@ -42,7 +42,7 @@ def create_transition_function():
                         for i in range(y - z + 1):
                             prob_lot2 += poisson_rent_2.pmf(i) * poisson_return_2.pmf(i + lot2_diff)
                         prob_lot2 += 1 - (poisson_rent_2.cdf(y) * poisson_return_2.cdf(y + lot2_diff))
-                        
+
                         transition_table[x, y, z, w, a] = prob_lot1 * prob_lot2
 
 
