@@ -4,7 +4,7 @@ import problem5env as env
 import math
 
 
-def value_iteration(S, theta=0.01, gamma=0.9):
+def value_iteration(S, theta=0.001, gamma=0.9):
     V = np.zeros((5, 5), dtype=float)
     while True:
         delta = 0

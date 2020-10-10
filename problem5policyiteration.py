@@ -39,7 +39,7 @@ def select_action_from_pi(pi, s):
 
 
 # Policy Iteration, as defined by the pseudocode in the book
-def policy_iteration(S, V, pi, theta=0.1, gamma=0.9):
+def policy_iteration(S, V, pi, theta=0.001, gamma=0.9):
     # We want to keep on looping until we have a stable policy. That is,
     # The highest value action is the one selected by our policy for every state.
     policy_stable = False
