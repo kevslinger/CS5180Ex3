@@ -39,19 +39,19 @@ def backup_action(n1, n2, a):
     ret = -2 * abs(a)
     morning_n1 = int(n1 - a)
     morning_n2 = int(n2 + a)
-    if morning_n1 < 0 or morning_n2 < 0:
-        return 0
+    #if morning_n1 < 0 or morning_n2 < 0:
+    #    return 0
     val = 0
     for new_n1 in range(21):
         for new_n2 in range(21):
-            #val += P1[morning_n1][new_n1] * P2[morning_n2][new_n2] * (R1[morning_n1] + R2[morning_n2] +
-            #                                                         gamma * V[new_n1][new_n2])
-            try:
-                val += P1[morning_n1, new_n1] * P2[morning_n2, new_n2] * (R1[morning_n1] + R2[morning_n2] +
-                                                                        gamma * V[new_n1, new_n2])
-            except IndexError:
-                print("morning_n1={}, new_n1={}, morning_n2={},new_n2={}".format(morning_n1, new_n1, morning_n2, new_n2))
-                exit(0)
+            val += P1[morning_n1][new_n1] * P2[morning_n2][new_n2] * (R1[morning_n1] + R2[morning_n2] +
+                                                                     gamma * V[new_n1][new_n2])
+            #try:
+            #    val += P1[morning_n1, new_n1] * P2[morning_n2, new_n2] * (R1[morning_n1] + R2[morning_n2] +
+            #                                                            gamma * V[new_n1, new_n2])
+            #except IndexError:
+            #    print("morning_n1={}, new_n1={}, morning_n2={},new_n2={}".format(morning_n1, new_n1, morning_n2, new_n2))
+            #    exit(0)
     return val
 
 
@@ -62,11 +62,13 @@ def policy_eval():
         for n1 in range(21):
             inner_delta_list = []
             for n2 in range(21):
+                #print("{}, {}".format(n1, n2))
                 old_v = V[n1][n2]
                 a = pi[n1][n2]
                 V[n1][n2] = backup_action(n1, n2, a)
                 inner_delta_list.append(abs(old_v - V[n1][n2]))
             outer_delta_list.append(max(inner_delta_list))
+        delta = max(outer_delta_list)
 
 
 def policy(n1, n2, epsilon=0.0000000001):
@@ -95,16 +97,15 @@ def greedify():
             pi[n1][n2] = policy(n1, n2)
             if b != pi[n1][n2]:
                 policy_improved = True
-    #show_policy()
+    show_policy()
     return policy_improved
 
 
 def show_policy():
     for n1 in range(21):
-        print()
         for n2 in range(21):
-            print("{}".format(pi[n1][n2]))
-
+            print("{} ".format(pi[n1][n2]), end='')
+        print()
 
 def policy_iteration():
     count = 0
@@ -135,3 +136,4 @@ if __name__ == '__main__':
     print("loaded p and r")
 
     policy_iteration()
+    np.save("/home/kevin/Desktop/pi2", pi)
