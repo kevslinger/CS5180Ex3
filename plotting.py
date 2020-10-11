@@ -27,9 +27,9 @@ def main(paths):
     plt.show()
 
 if __name__ == '__main__':
-   # main(["/home/kevin/Desktop/pi_0_2.npy",
-   #       "/home/kevin/Desktop/pi_1_2.npy",
-   #       "/home/kevin/Desktop/pi_2_2.npy",
-   #       "/home/kevin/Desktop/pi_3_2.npy",
-   #       "/home/kevin/Desktop/pi_4_2.npy"])
-   main(["/home/kevin/Desktop/sutton.npy"])
+    main(["pi_0.npy",
+          "pi_1.npy",
+          "pi_2.npy",
+          "pi_3.npy",
+          "pi_4.npy"])
+   #main(["/home/kevin/Desktop/sutton.npy"])
