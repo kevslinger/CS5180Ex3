@@ -2,7 +2,6 @@
 
 import numpy as np
 from scipy.stats import poisson
-import tqdm
 
 
 # Here is my implementation of the open_to_close function, which calculates
@@ -118,7 +117,6 @@ def show_policy():
             else:
                 print(" {} ".format(policy(x, y)), end='')
         print()
-
 
 
 # Policy iteration. I save the policy pi at each iteration (for plotting),
