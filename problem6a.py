@@ -49,6 +49,7 @@ def get_estimated_return(x, y, a):
     a = max(-5, min(5, a))
     morning_x = int(x - a)
     morning_y = int(y + a)
+    # It costs $2 per car moved.
     val = -2 * abs(a)
     for new_x in range(21):
         for new_y in range(21):
@@ -125,7 +126,7 @@ def show_policy():
 def policy_iteration():
     count = 0
     while True:
-        np.save("pi_{}".format(count), pi)
+        np.save("problem6a_plotting/pi_{}".format(count), pi)
         iterative_policy_evaluation()
         count += 1
         print(count)
@@ -155,4 +156,4 @@ if __name__ == '__main__':
     open_to_close(P_loc2, R_loc2, rental_lambda_loc2, return_lambda_loc2)
 
     policy_iteration()
-    np.save("V", V)
+    np.save("problem6a_plotting/V", V)
