@@ -157,5 +157,4 @@ if __name__ == '__main__':
     open_to_close(P_loc2, R_loc2, rental_lambda_loc2, return_lambda_loc2)
 
     policy_iteration()
-    np.save("pi", pi)
     np.save("V", V)
