@@ -127,7 +127,7 @@ def show_policy():
 def policy_iteration():
     count = 0
     while True:
-        np.save("/home/kevin/Desktop/pi_{}_2".format(count), pi)
+        np.save("pi_{}".format(count), pi)
         iterative_policy_evaluation()
         count += 1
         print(count)
@@ -157,4 +157,5 @@ if __name__ == '__main__':
     open_to_close(P_loc2, R_loc2, rental_lambda_loc2, return_lambda_loc2)
 
     policy_iteration()
-    np.save("/home/kevin/Desktop/pi", pi)
+    np.save("pi", pi)
+    np.save("V", V)
